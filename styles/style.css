@@ -1,0 +1,177 @@
+/* true root */
+* {
+  /* border: 1px solid red; */
+  padding: 0;
+  margin: 0;
+}
+
+/* general */
+html {
+  /* colors */
+  --main-blue: #006D77;
+  --main-white: #EDF6F9;
+
+  /* general styling */
+  background-color: var(--main-blue);
+  color: var(--main-white);
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+h2 {
+  padding: 1.5rem 0;
+}
+
+p {
+  padding: 0.5rem 0;
+}
+
+/* media queries */
+
+/* minimum screen width = 800px */
+@media only screen and (min-width: 800px) {
+  /* header & navigation */
+  header {
+    font-size: 1.25rem;
+  }
+
+  #navigation li {
+    padding-left: 1.5rem;
+  }
+
+  #code {
+    margin-left: auto;
+    margin-right: 1.5rem;
+  }
+
+  /* main */
+  #icons img {
+    padding-right: 1rem;
+  }
+}
+
+/* screen width between 500 and 800px */
+@media only screen and (min-width: 500px) and (max-width: 800px) {
+  /* header & navigation */
+  header {
+    font-size: 1.25rem;
+  }
+
+  #navigation li {
+    padding-left: 1.5rem;
+  }
+  
+  #navigation ul {
+    justify-content: space-evenly;
+  }
+
+  /* main */
+  #icons img {
+    padding-right: 1rem;
+  }
+}
+
+/* screen width between 250 and 500px */
+@media only screen and (min-width: 250px) and (max-width: 500px) {
+  /* header & navigation */
+  header {
+    font-size: 1.5rem;
+  }
+
+  #navigation ul {
+    flex-direction: column;
+  }
+
+  #navigation li {
+    padding: 0.75rem 0;
+    text-align: center;
+  }
+
+  /* main */
+  main {
+    align-items: center;
+    text-align: center;
+  }
+
+  #icons {
+    justify-content: center;
+  }
+
+  #icons img {
+    padding: 0.5rem;
+  }
+}
+
+/* screen width smaller than 250px */
+main::before {
+  content: '';
+}
+
+@media only screen and (max-width: 250px) {
+  /* general */
+  html {
+    background-color: black;
+    padding: 0.5rem;
+  }
+
+  header {
+    display: none;
+  }
+
+  main::before {
+    content: 'Ooh no! This device is too small to render this content properly. Please choose another device to visit this website.';
+  }
+
+  main * {
+    display: none;
+  }
+}
+
+/* header & navigation */
+header {
+  border-bottom: 3px solid var(--main-white);
+  padding: 1.25rem 0;
+  margin: 0;
+}
+
+#navigation ul {
+  display: flex;
+  padding: 0;
+}
+
+#navigation li {
+  list-style-type: none;
+}
+
+#navigation a {
+  color: var(--main-white);
+  text-decoration: none;
+}
+
+#code {
+  font-weight: bold;
+}
+
+/* main */
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  padding: 0 1.5rem;
+}
+
+#icons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#icons img {
+  width: 3rem;
+  height: 3rem;
+}
+
+
+
+
