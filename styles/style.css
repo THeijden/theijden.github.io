@@ -1,29 +1,74 @@
-/* ROOT */
+/* FONT MANAGEMENT */
+
+/* Main fonts */
+
+@font-face { 
+  font-family: 'League Spartan Bold';
+  src: url('./fonts/leage_spartan/LeagueSpartan-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('./fonts/libre_baskerville/LibreBaskerville-Regular.ttf') format('truetype');
+}
+
+/* Backup fonts */
+
+@font-face { 
+  font-family: 'Space Mono';
+  src: url('./fonts/space\ mono/SpaceMono-Regular.ttf') format('truetype'),
+  url('./fonts/space\ mono/SpaceMono-Italic.ttf') format('truetype'),
+  url('./fonts/space\ mono/SpaceMono-Bold.ttf') format('truetype'),
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: url('./fonts/merriweather/Merriweather-Regular.ttf') format('truetype'),
+  url('./fonts/merriweather/Merriweather-Italic.ttf') format('truetype'),
+  url('./fonts/merriweather/Merriweather-Bold.ttf') format('truetype'),
+}
+
+/* ROOT STYLING */
+
+/* General */
+
 * {
-  /* border: 1px solid red; */
   padding: 0;
   margin: 0;
 }
 
-/* GENERAL */
 html {
+  /* fonts */
+  --leagespartan-bold-font: 'League Spartan Bold';
+  --librebaskerville-font: 'Libre Baskerville';
+  --spacemono-font: 'Space Mono';
+  --merriweather-font: 'Merriweather';
+
   /* colors */
-  --main-blue: #006D77;
-  --main-white: #EDF6F9;
+  --blue-color: #006D77;
+  --white-color: #EDF6F9;
+  --salmon-color: #FFDDD2;
 
   /* general styling */
-  background-color: var(--main-blue);
-  color: var(--main-white);
+  background-color: var(--blue-color);
   box-sizing: border-box;
+  color: var(--white-color);
   font-size: 16px;
 }
 
-h2 {
+h1 
+, h2 {
+  font-family: var(--leagespartan-bold-font), var(--spacemono-font), sans-serif;
   padding: 1.5rem 0;
 }
 
 p {
+  font-family: var(--librebaskerville-font), var(--merriweather-font), serif;
   padding: 0.5rem 0;
+}
+
+a {
+  color: var(--salmon-color);
 }
 
 .uppercase {
@@ -34,28 +79,52 @@ p {
   font-weight: bold;
 }
 
-/* header & navigation */
-header {
-  border-bottom: 3px solid var(--main-white);
-  padding: 1.25rem 0;
-  margin: 0;
+.italic {
+  font-style: italic;
 }
 
-#navigation ul {
+.icon {
+  height: 3rem;
+  width: 3rem;
+}
+
+/* Header & Navigation */
+
+header {
+  background-color: var(--blue-color); /* Prevent elements from appearing underneath */
+  border-bottom: 3px solid var(--white-color);
+  font-family: var(--leagespartan-bold-font), var(--spacemono-font), sans-serif; /* Not captured by h1, h2 & p selectors above */
+  margin: 0;
+  padding: 1.25rem 0;
+  z-index: 2; /* Make sure to appear over timeline defined below */
+}
+
+nav ul {
+  align-items: center;
   display: flex;
   padding: 0;
 }
 
-#navigation li {
+nav li {
   list-style-type: none;
 }
 
-#navigation a {
-  color: var(--main-white);
+nav a {
+  color: var(--white-color); /* Override default salmon color */
   text-decoration: none;
 }
 
-/* main */
+#gitcat {
+  transition: 0.5s; /* For visual effect on hover */
+}
+
+#gitcat:hover {
+  height: 3.25rem;
+  width: 3.25rem;
+}
+
+/* Main */
+
 main {
   display: flex;
   flex-direction: column;
@@ -65,200 +134,267 @@ section {
   padding: 1rem 1.5rem;
 }
 
+/* PAGE SPECIFIC CONTENT */
+
+/* index.html */
+
 /* icons */
-#icons {
+
+#skill-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 13rem);
+  grid-template-columns: repeat(auto-fill, 13rem); /* Grid scales & adjusts with device width */
   padding: 1rem 0;
 }
 
-#icons img {
-  width: 3rem;
-  height: 3rem;
-}
-
 .skill {
-  display: flex;
-  flex-direction: row;
   align-items: center;
+  display: flex;
   padding: 0.5rem 0;
 }
 
 .skill p {
-  flex: 1;
+  flex: 1; /* Ensures full container width for styling */
+  padding-left: 1rem;
 }
 
 /* timeline */
 
-.timeline {
-  position: relative;
+.tl {
   margin: 1rem auto;
+  position: relative; /* Ensures fixed position within section */
 }
 
-.timeline::after {
-  content: '';
-  position: absolute;
+.tl::after {
+  background-color: var(--white-color);
   border-radius: 2rem;
-  width: 0.5rem;
-  background-color: var(--main-white);
-  top: 0;
   bottom: 0;
+  content: ''; /* No content needed for the timeline itself */
   left: 1rem;
+  position: absolute;
+  top: 0;
+  width: 0.5rem;
 }
 
-.container {
+.tl-container {
   padding: 1rem 2.5rem;
   position: relative;
 }
 
-.container::after {
-  content: '';
-  position: absolute;
-  width: 1rem;
-  height: 1rem;
-  background-color: var(--main-white);
-  border: 0.25rem solid black;
-  top: 2.75rem;
-  left: 0.5rem;
+.tl-container::after { /* Colored dots on timeline */
+  background-color: var(--salmon-color);
+  border: 0.2rem solid black;
   border-radius: 50%;
-  z-index: 1;
+  content: '';
+  height: 1rem;
+  left: 0.5rem;
+  position: absolute;
+  top: 2.75rem;
+  width: 1rem;
+  z-index: 1; /* Ensures dots are placed over the timeline */
 }
 
-.container::before {
-  content: " ";
+.tl-container::before { /* Box pointers to timeline*/
+  border: medium solid var(--white-color);
+  border-color: transparent var(--salmon-color) transparent transparent;
+  border-width: 1rem 1rem 1rem 0; /* Creates trianlge shape */
+  content: '';
   height: 0;
+  left: 2.5rem;
   position: absolute;
   top: 2.5rem;
   width: 0;
-  z-index: 1;
-  left: 2.5rem;
-  border: medium solid var(--main-white);
-  border-width: 1rem 1rem 1rem 0;
-  border-color: transparent var(--main-white) transparent transparent;
 }
 
-.content {
-  display: flex;
+.tl-content {
   align-items: center;
-  height: 5rem;
-  width: 100%;
-  background-color: var(--main-white);
-  left: 1rem;
-  color: black;
-  position: relative;
+  background-color: var(--salmon-color);
   border-radius: 0.25rem;
+  color: black;
+  display: flex;
+  height: 5rem;
+  left: 1rem;
+  position: relative;
 }
 
-.content > * {
-  /* border: 1px solid red; */
+.tl-content > * {
   padding: 0.25rem;
 }
 
-.content h3 {
+.tl-content h3 {
   flex: 1;
   text-align: center;
 }
 
-.content p {
-  flex: 9;
+.tl-content p {
+  flex: 9; /* Makes sure the text scales proportionally to the h3 content */
+}
+
+/* contact.html */
+
+section ul {
+  font-family: var(--librebaskerville-font), var(--merriweather-font), serif; /* Not captured by h1, h2 & p selectors above */
+  padding: 0.5rem 1.5rem;
+}
+
+section li {
+  padding: 0.25rem 0;
 }
 
 /* MEDIA QUERIES */
 
-/* minimum screen width >= 800px */
+/* Minimum screen width >= 800px */
+
 @media only screen and (min-width: 800px) {
-  /* header & navigation */
-  #navigation li {
-    padding-left: 1.5rem;
+  /* Header & Navigation */
+  header {
+    font-size: 1.25rem;
+    position: sticky; /* Ensures the header stays in place while scrolling */
+    top: 0;
   }
 
-  #code {
+  nav li {
+    padding: 0 1.5rem;
+  }
+
+  .nav-item a {
+    transition: 0.5s color; /* For visual effect on hover */
+  }
+
+  .nav-item a:hover {
+    color: #E29578;
+  }
+
+  #right { /* Placing gitcat logo to the right */
     margin-left: auto;
     margin-right: 1.5rem;
   }
+}
 
-  /* main */
-  .skill p {
-    padding-left: 1rem;
+/* Screen width between 450 and 800px */
+
+@media only screen and (min-width: 450px) and (max-width: 800px) {
+  /* Header & Navigation */
+  header {
+    position: sticky;
+    top: 0;
+  }
+
+  nav ul {
+    justify-content: space-evenly; /* Evenly divide header items */
+  }
+
+  .nav-item a { /* Additional styling to facilitate visual clarity for both mouse and click devices */
+    border: 2px solid var(--white-color);
+    border-radius: 5px;
+    padding: 0.25rem;
+    transition: 0.5s;
+  }
+
+  .nav-item a:hover {
+    border: 2px solid var(--salmon-color);
+    color: var(--salmon-color);
+  }
+
+  .nav-item a:active {
+    background-color: var(--salmon-color);
+    border: 2px solid var(--white-color);
+    color: var(--white-color);
+  }
+
+  /* Timeline */  
+  .tl-content p {
+    flex: 5; /* Makes sure the text scales proportionally to the h3 content */
   }
 }
 
-/* screen width between 500 and 800px */
-@media only screen and (min-width: 500px) and (max-width: 800px) {
-  /* header & navigation */
-  #navigation li {
-    padding-left: 1.5rem;
-  }
-  
-  #navigation ul {
-    justify-content: space-evenly;
+/* screen width between 300 and 450px */
+
+@media only screen and (min-width: 300px) and (max-width: 450px) {
+  /* Header & Navigation */
+  header {
+    font-size: 1.25rem;
   }
 
-  /* main */
-  .skill p {
-    padding-left: 1rem;
+  nav ul {
+    flex-direction: column; /* Place items below each other for mobile layout */
   }
 
-  /* timeline */  
-  .content p {
-    flex: 5;
-  }
-}
-
-/* screen width between 300 and 500px */
-@media only screen and (min-width: 300px) and (max-width: 500px) {
-  /* header & navigation */
-  #navigation ul {
-    flex-direction: column;
-  }
-
-  #navigation li {
-    padding: 0.75rem 0;
+  nav li {
+    padding: 1.5rem 0;
     text-align: center;
   }
 
-  /* main */
+  .nav-item a { /* Additional styling to facilitate visual clarity for both mouse and click devices */
+    border: 2px solid var(--white-color);
+    border-radius: 5px;
+    padding: 0.25rem;
+    transition: 0.5s;
+  }
+
+  .nav-item a:hover {
+    border: 2px solid var(--salmon-color);
+    color: var(--salmon-color);
+  }
+
+  .nav-item a:active {
+    background-color: var(--salmon-color);
+    border: 2px solid var(--white-color);
+    color: var(--white-color);
+  }
+
+  /* Main */
   main {
     align-items: center;
     text-align: center;
   }
 
-  #icons {
+  /* Skills */
+  #skill-wrapper {
     justify-content: center;
   }
 
-  /* timeline */
-  .content {
-    height: 8rem;
-    font-size: 0.9rem;
+  .skill p {
+    padding: 0 1rem; /* Deviate from default to make text center aligned */
+  }
+
+  /* Timeline */
+  .tl-content { /* Adjust timeline for mobile viewing */
     flex-direction: column;
+    font-size: 0.8rem;
+    height: 8rem;
     justify-content: center;
   }
 
-  .container::after {
+  .tl-container::after {
     top: 4rem;
   }
 
-  .container::before {
+  .tl-container::before {
     top: 3.75rem;
   }
 
-  .content h3 {
+  .tl-content h3 {
     padding-top: 1rem;
   }
 
-  .content > * {
+  .tl-content > * {
     align-content: center;
+  }
+
+  /* Contact */
+  section li {
+    list-style-type: none; /* Remove bullet points from list */
   }
 }
 
-/* screen width smaller than 300px */
-main::before {
+/* Screen width smaller than 300px */
+
+main::before { /* Only needs to be rendered for sceens that are too small */
   content: '';
 }
 
 @media only screen and (max-width: 300px) {
-  /* general */
+  /* General */
   html {
     background-color: black;
     padding: 0.5rem;
@@ -272,12 +408,7 @@ main::before {
     content: 'Ooh no! This device is too small to render this content properly. Please choose another device to visit this website.';
   }
 
-  main * {
+  main * { /* Remove normal main content from document flow */
     display: none;
   }
 }
-
-
-
-
-
