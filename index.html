@@ -1,113 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-
     <!-- meta information -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!-- include css -->
      <link rel="stylesheet" href="styles/style.css">
-
     <!-- include title -->
     <title>TVDH</title>
-
   </head>
-
   <body>
-
     <!-- navigation -->
     <header>
-      <nav id="navigation">
+      <nav>
         <ul>
-          <li class="uppercase bold"><a href="#">Home</a></li>
-          <li class="uppercase bold"><a href="#">Projects</a></li>
-          <li class="uppercase bold"><a href="#">Contact</a></li>
-          <li id="code" class="bold">&lt; / &gt;</li>
+          <li class="nav-item uppercase bold"><a href="./index.html">Home</a></li>
+          <li class="nav-item uppercase bold"><a href="./projects.html">Projects</a></li>
+          <li class="nav-item uppercase bold"><a href="./contact.html">Contact</a></li>
+          <li id="right"><a href="https://github.com/THeijden?tab=repositories" target="_blank"><img id="gitcat" src="./styles/images/gitcat.png" alt="GitHub cat logo" class="icon"></a></li>
         </ul>
       </nav>
     </header>  
-    
     <!-- main content -->
     <main>
-
       <!-- introduction -->
-      <section id="introduction">
-        <h2>About me</h1>
+      <section>
+        <h2 class="italic">About me</h1>
         <p>Hi! I am Tim, an aspiring web developer living in Amersfoort, the Netherlands.</p>
-        <p>In my free time I like to play games & watch series, go for long walks or foolishly challenge anybody to a game of table tennis.</p>
+        <p>In my free time I like to play video games & watch animated series, go for long walks or foolishly challenge anybody to a game of table tennis.</p>
       </section>
-
       <!-- skills -->
-      <section id="skills">
-        <h2>Skills & Experience</h2>
-        <p>Professionally, people characterize me as <a href="https://www.shortform.com/blog/surrounded-by-idiots-colors/" >blue</a> (what a surprise) and green, preferring neat work and direct communication.</p>
-
+      <section>
+        <h2 class="italic">Skills & Experience</h2>
+        <p>Professionally, people characterize me as <a href="https://www.shortform.com/blog/surrounded-by-idiots-colors/" target="_blank">blue and green</a>, preferring neat work and direct communication.</p>
         <!-- (coding) skills -->
         <p>I have practiced the following (coding) languages and applications when creating the projects that you can find on this site, as well as this site itself.</p>
-        <div id="icons">
+        <div id="skill-wrapper">
           <div class="skill">
-            <img src="styles/images/html.png" alt="HTML logo">
+            <img class="icon" src="styles/images/html-5.png" alt="HTML logo">
             <p>HTML</p>
           </div>
           <div class="skill">
-            <img src="styles/images/css.png" alt="CSS logo">
+            <img class="icon" src="styles/images/css-3.png" alt="CSS logo">
             <p>CSS</p>
           </div>
           <div class="skill">
-            <img src="styles/images/javascript.png" alt="JavaScript logo">
+            <img class="icon" src="styles/images/js.png" alt="JavaScript logo">
             <p>JavaScript</p>
           </div>
           <div class="skill">
-            <img src="styles/images/git.png" alt="Git logo">
+            <img class="icon" src="styles/images/node-js.png" alt="Node.js logo">
+            <p>Node.js</p>
+          </div>
+          <div class="skill">
+            <img class="icon" src="styles/images/git.png" alt="Git logo">
             <p>Git</p>
           </div>
           <div class="skill">
-            <img src="styles/images/github.png" alt="GitHub logo">
+            <img class="icon" src="styles/images/github.png" alt="GitHub logo">
             <p>GitHub</p>
           </div>
           <div class="skill">
-            <img src="styles/images/chrome.png" alt="Chrome logo">
+            <img class="icon" src="styles/images/chrome.png" alt="Chrome logo">
             <p>Chrome DevTools</p>
           </div>
         </div>
-
         <!-- timeline -->
-        <div id="timeline">
+        <div>
+          <h2 class="italic">Timeline</h2>
           <p>Below, you will find a timeline of my professional experiences. If you want to read more about them, have a look at my LinkedIn.</p>
-          <div class="timeline">
-            <div class="container">
-              <div class="content">
+          <div class="tl">
+            <div class="tl-container">
+              <div class="tl-content">
                 <h3 class="bold">2023-2025:</h3>
-                <p class="experience">Working @Coolblue as a Data Visualization Specialist</p>
+                <p class="experience">Junior/ Medior Data Visualization Specialist <em>@Coolblue</em></p>
               </div>
             </div>
-            <div class="container">
-              <div class="content">
+            <div class="tl-container">
+              <div class="tl-content">
                 <h3 class="bold">2017-2023:</h3>
-                <p class="experience">Completed Economics & Business Economics and Information Management @Tilburg University</p>
+                <p class="experience">Economics & Business Economics and Information Management <em>@Tilburg University</em></p>
               </div>
             </div>
-            <div class="container">
-              <div class="content">
+            <div class="tl-container">
+              <div class="tl-content">
                 <h3 class="bold">2022-2022:</h3>
-                <p class="experience">Internship @ANWB</p>
+                <p class="experience">Internship <em>@ANWB</em></p>
               </div>
             </div>
-            <div class="container">
-              <div class="content">
+            <div class="tl-container">
+              <div class="tl-content">
                 <h3 class="bold">2015-2021:</h3>
-                <p class="experience">Various parttime jobs @Gamma @Dirk van den Broek @SpaSereen</p>
+                <p class="experience">Parttime jobs <em>@Gamma @Dirk van den Broek @SpaSereen</em></p>
               </div>
             </div>
           </div>
         </div>
-
       </section>
-
     </main>
-
   </body>
-
 </html>
